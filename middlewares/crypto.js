@@ -5,7 +5,6 @@ module.exports=function(str){
     // sha1加密方式更加安全
     var sha1 = crypto.createHash('sha1');
 
-
     // 加密
     sha1.update(str);
 
