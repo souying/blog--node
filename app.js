@@ -20,6 +20,7 @@ var topic = require('./routes/topic');
 var details = require('./routes/details');
 //文章前台列表页
 var list = require('./routes/list');
+
 var app = express();
 
 // view engine setup
