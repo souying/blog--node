@@ -26,6 +26,7 @@ index.index = function(req,res){
 			if(data.length==0){
 				// 跳转网站设置信息页
 				res.redirect('/install');
+				
 			}else{
 
 				// 查询条件
