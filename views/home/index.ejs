@@ -1,0 +1,67 @@
+<!-- 加载头部 -->
+<% include header %>
+<!-- nav end -->
+<!-- banner start -->
+<div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-article-margin">
+    <div data-am-widget="slider" class="am-slider am-slider-b1" data-am-slider='{&quot;controlNav&quot;:false}' >
+    <ul class="am-slides">
+        <% if(isshow==1){ %>
+            <% topiclunData.forEach(function(topiclunData){ %>
+                <li>
+                    <img src="<%= topiclunData.img %>">
+                    <div class="blog-slider-desc am-slider-desc ">
+                        <div class="blog-text-center blog-slider-con">
+                            <span><a href="" class="blog-color"><%= topiclunData.user.uname %> &nbsp;</a></span>               
+                            <h1 class="blog-h-margin"><a href="/details/<%= topiclunData._id %>"><%= topiclunData.tName %></a></h1>
+                            <p>
+                                <%= topiclunData.tj %>
+                            </p>
+                            <span class="blog-bor"><%= topiclunData.time %></span>
+                            <br><br><br><br><br><br><br>                
+                        </div>
+                    </div>
+                </li> 
+            <%  }) %>
+        
+        <%   } %>
+      
+    </ul>
+    </div>
+</div>
+<!-- banner end -->
+
+<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed">
+    <div class="am-u-md-8 am-u-sm-12">
+        <% topicData.forEach(function(topicData){ %>
+            <article class="am-g blog-entry-article">
+                <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+                    <img src="<%= topicData.img %>" alt="" class="am-u-sm-12">
+                </div>
+                <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                    <span><a href="" class="blog-color"><%= topicData.user.uname %> &nbsp;</a></span>
+                    <span> @<%= topicData.cid.cateName %> &nbsp;</span>
+                    <span><%= topicData.time %></span>
+                    <h1><a href="/details/<%= topicData._id %>"><%= topicData.tName %></a></h1>
+                    <p>
+                        <%= topicData.tj %>
+                    </p>
+                    <p><a href="" class="blog-continue">continue reading</a></p>
+                </div>
+            </article>
+        <%  }) %>
+        
+
+        <ul class="am-pagination">
+          <li class="am-pagination-next">
+            <a href="/list">更多 &raquo;</a>
+          </li>
+        </ul>
+    </div>
+
+    <!-- 公共侧边栏部分 -->
+      <% include slidebar %>
+</div>
+<!-- content end -->
+<!-- 公共底部部分 -->
+<% include footer %>

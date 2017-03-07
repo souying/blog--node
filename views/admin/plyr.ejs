@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> - 视频播放</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="stylesheet" href="/css/plugins/plyr/plyr.css">
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="player">
+                           <video width="320" height="240" controls>
+                                <source src="http://220.194.199.189/14/t/b/f/e/tbfeaervhzuwmhlgnlecuxkkcepien/hc.yinyuetai.com/C255015A32EE95B6C8D34A14A52ADC01.mp4" type="video/mp4">
+                                您的浏览器不支持 video 标签。
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function (d, u) {
+            var a = new XMLHttpRequest(),
+                b = d.body;
+
+            // Check for CORS support
+            // If you're loading from same domain, you can remove the if statement
+            if ("withCredentials" in a) {
+                a.open("GET", u, true);
+                a.send();
+                a.onload = function () {
+                    var c = d.createElement("div");
+                    c.setAttribute("hidden", "");
+                    c.innerHTML = a.responseText;
+                    b.insertBefore(c, b.childNodes[0]);
+                }
+            }
+        })(document, "/css/plugins/plyr/sprite.svg");
+    </script>
+
+    <!-- Plyr core script -->
+    <script src="/js/plugins/plyr/plyr.js"></script>
+    <script>
+        plyr.setup();
+    </script>
+
+    <!-- 全局js -->
+    <script src="/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="/js/content.js?v=1.0.0"></script>
+
+
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - 写信</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-sm-12 animated fadeInRight">
+                <div class="mail-box-header">
+                    <div class="pull-right tooltip-demo">
+                        <!-- <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="存为草稿"><i class="fa fa-pencil"></i> 存为草稿</a>
+                        <a href="mailbox.html" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="放弃"><i class="fa fa-times"></i> 放弃</a> -->
+                    </div>
+                    <h2>
+                    写信
+                </h2>
+                </div>
+                <div class="mail-box">
+
+
+                    <div class="mail-body">
+
+                        <form class="form-horizontal" method="post" action="/admin/doEmail">
+                            <!-- 输出错误信息 -->
+                              <% if(errMsg.length){ %>
+                                <p class="alert alert-danger"><%= errMsg %></p>
+                              <%  } %>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">发送到：</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="email_port">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">主题：</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="email_title">
+                                </div>
+                            </div>
+                        
+
+                    </div>
+
+                    <div class="mail-text h-200">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                    <textarea name="email_content" id="" cols="100%" rows="15">
+                        <div class="summernote" style="margin-left:5%;margin-right:5%;">
+                            <h2>前端博客</h2>
+                            <p>
+                                
+                            
+                            </p>
+                        </div>
+                    </textarea>
+                    </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="mail-body text-right tooltip-demo">
+                        <button  class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> 发送</button>
+                        <!-- <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> 放弃</a> -->
+                        <!-- <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> 存为草稿</a> -->
+                    </div>
+                    <div class="clearfix"></div>
+
+                </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/bootstrap.min.js?v=3.3.6"></script>
+
+
+
+    <!-- 自定义js -->
+    <script src="/js/content.js?v=1.0.0"></script>
+
+
+    <!-- iCheck -->
+    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- SUMMERNOTE -->
+    <script src="/js/plugins/summernote/summernote.min.js"></script>
+    <script src="/js/plugins/summernote/summernote-zh-CN.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+
+            $('.summernote').summernote({
+                lang: 'zh-CN'
+            });
+
+        });
+        var edit = function () {
+            $('.click2edit').summernote({
+                focus: true
+            });
+        };
+        var save = function () {
+            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+            $('.click2edit').destroy();
+        };
+    </script>
+
+    
+    
+
+</body>
+
+</html>

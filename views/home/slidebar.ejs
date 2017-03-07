@@ -1,0 +1,94 @@
+    <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
+        <div class="blog-sidebar-widget blog-bor">
+            <h2 class="blog-text-center blog-title"><span>个人信息</span></h2>
+            <img src="http://wx1.sinaimg.cn/mw690/b5276e73ly1fct18e77h1g20b30budgg.gif" alt="about me" class="blog-entry-img" >
+            <p><%= userData.userName %></p>
+            <p>
+                 <%= userData.des %>
+            </p>
+        </div>
+        <div class="blog-sidebar-widget blog-bor">
+            <h2 class="blog-text-center blog-title"><span>Contact ME</span></h2>
+            <p>
+                <a href="tencent://Message/?Uin=100101065&websiteName=www.oicqzone.com&Menu=yes"><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
+                <a href="https://github.com/souying"><span class="am-icon-github am-icon-fw blog-icon"></span></a>
+                <a href="http://weibo.com/fuliku"><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
+            </p>
+        </div>
+        <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
+            <h2 class="blog-title"><span>标签云</span></h2>
+            <div class="am-u-sm-12 blog-clear-padding">
+            <a href="/list/tag/?tag=Javascript" class="blog-tag">javascript</a>
+            <a href="/list/tag/?tag=心情" class="blog-tag">心情</a>
+            <a href="/list/tag/?tag=笔记" class="blog-tag">笔记</a>
+            <a href="/list/tag/?tag=html5" class="blog-tag">html5</a>
+            <a href="/list/tag/?tag=css3" class="blog-tag">css3</a>
+            <a href="/list/tag/?tag=前端框架" class="blog-tag">前端框架</a>
+            <a href="/list/tag/?tag=node.js" class="blog-tag">node.js</a>
+            </div>
+        </div>
+        <% if(isshow==1){ %>
+        <div class="blog-sidebar-widget blog-bor">
+            <h2 class="blog-title"><span>最新文章</span></h2>
+            <ul class="am-list">
+                
+                    <% topicnewData.forEach(function(topicnewData){ %>
+                        <li><a href="/details/<%= topicnewData._id %>" ><%= topicnewData.tName %></a></li>
+                    <% }) %>                              
+            </ul>
+        </div>
+        <%  } %>
+        <div class="blog-sidebar-widget blog-bor">
+            <h2 class="blog-text-center blog-title"><span>站点统计</span></h2>
+            <p>
+                网站总访问量：<%= webData.webNumber %>
+            </p>
+            <p>
+                文章：<%= total %>篇
+            </p>
+            <p>
+                网站运行：<% var times = new Date() - webData.webTime;
+                        console.log(times);
+                        var timet;
+                        if(Math.floor(times/1000/60/60/24)){
+                          timet = Math.floor(times/1000/60/60/24)+'天';
+                        }
+
+                        %>
+                       <%= timet %> 
+            </p>
+        </div>
+        <div class="blog-sidebar-widget blog-bor">
+            <h2 class="blog-text-center blog-title"><span>最新访客</span></h2>
+            <p class="ds-recent-visitors data-avatar-size="45" data-num-items="12"">
+                <!--多说js加载开始，一个页面只需要加载一次 -->
+                <script type="text/javascript">
+                var duoshuoQuery = {short_name:"blogdiv"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+                </script>
+                <!--多说js加载结束，一个页面只需要加载一次 -->
+            </p>
+        </div>
+        <% if(kind==1){ %>
+            <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
+                <h2 class="blog-title"><span>邻家小孩</span></h2>
+                <div class="am-u-sm-12 blog-clear-padding">
+                
+                <% kindData.forEach(function(kindData){ %>
+                    <a href="<%= kindData.webUrl %>" class="blog-tag" target="_blank"><%= kindData.webName %></a>
+                <% }) %>
+                </div>
+            </div>
+        <%  } %>
+        
+    </div>
+
+
+
+   

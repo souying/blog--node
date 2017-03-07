@@ -1,0 +1,56 @@
+<footer class="blog-footer">
+    <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>博主留言</h3>
+            <p class="am-text-sm">哈喽，<br> 欢迎你来到我的博客----<%= webData.webName %>，<br> 16年6月开始接触前端，投身到前端的大潮中来，<br>
+            喜欢读书，喜欢旅行，喜欢各种新鲜事物的我，期待和你成为朋友<br>
+            嗯嗯嗯，不知道说啥了。外面的世界真精彩<br>
+            感觉js太强大了，一门语言可以贯穿前后端</br>
+            和我走在前端路上的兄弟们--来吧一起上<br>
+            加油！！！<br>
+            加油！！！<br>
+            </p>
+        </div>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>社交账号</h3>
+            <p>
+                <a href="tencent://Message/?Uin=100101065&websiteName=www.oicqzone.com&Menu=yes"><span class="am-icon-qq am-icon-fw am-primary blog-icon blog-icon"></span></a>
+                <a href="https://github.com/souying"><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
+                <a href="http://weibo.com/fuliku"><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
+            </p>
+            <h3>说明</h3>
+            <p>
+                本站整站是node.js和mongoDB数据库搭建完成，框架用express框架，如有bug请大家指正，有时间会一直改版下去，有一起学node的骚年加我一起充电学习！！
+            </p>          
+        </div>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+              <h1>前端技能库</h1>
+            <p>
+                <ul>
+                    <li><a href="http://nodejs.cn/" target="_blank">node.js中文网</a></li>
+                    <li><a href="http://lesscss.cn/" target="_blank">less中文网</a></li>
+                    <li><a href="http://www.shouce.ren/" target="_blank">手册网</a></li>
+                    <li><a href="http://www.runoob.com/" target="_blank">菜鸟教程</a></li>
+                    <li>...</li>
+                </ul>
+            </p>
+        </div>
+    </div>    
+    <div class="blog-text-center">© 2017 <a href="<%= webData.webUrl %>"><%= webData.webName %></a>, Inc. <%= webData.webBeian %>. 博主邮箱 <%= webData.webEmail %></div>    
+  </footer>
+
+
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/js/marked.js"></script>
+<script src="/js/highlight.min.js"></script>
+</body>
+</html>

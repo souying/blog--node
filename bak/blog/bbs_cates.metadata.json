@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"blog.bbs_cates"},{"v":1,"unique":true,"key":{"cateName":1},"name":"cateName_1","ns":"blog.bbs_cates","background":true}]}

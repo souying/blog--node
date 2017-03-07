@@ -1,0 +1,47 @@
+<!-- 加载头部 -->
+<% include header %>
+
+<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed">
+    <div class="am-u-md-8 am-u-sm-12">
+        <% if(topicData!=undefined){ %>
+            <% topicData.forEach(function(topicData){ %>
+                <article class="am-g blog-entry-article">
+                    <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+                        <img src="<%= topicData.img %>" alt="" class="am-u-sm-12">
+                    </div>
+                    <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                        <span><a href="" class="blog-color"><%= topicData.user.uname %> &nbsp;</a></span>
+                        <span> @<%= topicData.cid.cateName %> &nbsp;</span>
+                        <span><%= topicData.time %></span>
+                        <h1><a href="/details/<%= topicData._id %>"><%= topicData.tName %></a></h1>
+                        <p>
+                            <%= topicData.tj %>
+                        </p>
+                        <p><a href="" class="blog-continue">continue reading</a></p>
+                    </div>
+                </article>
+            <%  }) %>
+        <%  }else{ %>
+            <p class="alert alert-danger">没有搜索到结果噢</p>
+        <% } %>
+        
+        <ul class="am-pagination">
+            <% if(page>1){ %>
+                <li class="am-pagination-prev"><a href="/list">&laquo; Prev</a></li>
+            <% } %>
+
+            <% if(page<pageMax){ %>
+                <li class="am-pagination-next"><a href="/list">Next &raquo;</a></li>
+            <% } %>
+        </ul>
+    </div>
+    
+    <!-- 公共侧边栏部分 -->
+      <% include slidebar %>
+</div>
+<!-- content end -->
+
+
+ <!-- 公共底部部分 -->
+<% include footer %>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= topicData.tName %>--<%= webData.webName %></title>
+  <meta name="keywords" content="<%= webData.webKey %>">
+  <meta name="description" content="<%= webData.webDes %>">
+  <link rel="icon" href="/assets/i/favicon.ico">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="/assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileImage" content="/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+  <link rel="stylesheet" href="/css/default.min.css">
+  <script src="/js/marked.js"></script>
+</head>
+
+<body id="blog">
+
+<header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
+    <div class="am-u-sm-8">
+       <a href="/"><img style="float:left;margin-bottom:20px;" width="200" src="http://wx4.sinaimg.cn/mw690/b5276e73ly1fct0sxaw3jj204v01nq2x.jpg" alt="<%= webData.webName %>"/></a>
+       
+    </div>
+</header>
+<hr>
+<!-- nav start -->
+<nav class="am-g am-g-fixed blog-fixed blog-nav">
+<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav">
+      <li class="am-active"><a href="/">首页</a></li>
+      <% cateData.forEach(function(cateData){ %>
+          <li><a href="/list/?tab=<%= cateData._id %>"><%= cateData.cateName %></a></li>
+      <% }) %>
+      <li><a href="/words">留言板</a></li>
+    </ul>
+    <form class="am-topbar-form am-topbar-right am-form-inline" role="search" action="/list/search">
+      <div class="am-form-group">
+        <input type="search" name="search" class="am-form-field am-input-sm" placeholder="搜索">
+        <!-- name得放在前面 放在后面还不行 不知道什么情况 -->
+        <!-- <input type="search" name="search" class="am-form-field am-input-sm" placeholder="搜索"> -->
+      </div>
+    </form>
+  </div>
+</nav>
+<hr>
+<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed blog-content">
+    <div class="am-u-md-8 am-u-sm-12">
+      <article class="am-article blog-article-p">
+        <div class="am-article-hd">
+          <h1 class="am-article-title blog-text-center"><%= topicData.tName %></h1>
+          <p class="am-article-meta blog-text-center">
+              <span><a href="#" class="blog-color"><%= topicData.user.uname %> &nbsp;</a></span>-
+              <span><a href="#">@<%= topicData.cid.cateName %> &nbsp;</a></span>-
+              <span><a href="#"><%= topicData.time %></a></span>
+               &nbsp;</a></span>-
+              <span><a href="#">浏览量&nbsp;&nbsp;<%= topicData.visitNum %> &nbsp;</a></span>
+          </p>
+        </div>        
+        <div class="am-article-bd">
+        <img style="margin:0 auto;" src="<%= topicData.img %>" alt="" class="blog-entry-img blog-article-margin"> 
+        <hr>         
+        <div class="class="am-article-lead"">
+        <h1>文章内容：</h1>
+            <!-- 解析编辑器代码 -->
+            <div id="text-input" style="width:0%;height:0%;">
+               <!-- 这里什么也不加  -->
+            </div>
+            <div id="preview"><%= topicData.tContent %></div>
+            
+        </div>
+        </div>
+        <hr>
+        <h1>推荐文章:</h1>
+        <ul class="am-list am-list-border">
+        <% if(isshow==1){ %>
+          <% topictopData.forEach(function(topictopData){ %>
+              <li><a href="/details/<%= topictopData._id %>"><i class="am-icon-pencil am-icon-fw"></i><%= topictopData.tName %></a></li>
+          <% }) %>
+                    
+        <%  } %>
+        </ul>
+      </article>
+          <div class="am-g blog-article-widget blog-article-margin">
+              <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
+                <span class="am-icon-tags"> &nbsp;</span><b>标签：</b><span><%= topicData.tag %></span>
+                <hr>
+                <a href=" tencent://Message/?Uin=100101065&websiteName=www.oicqzone.com&Menu=yes"><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
+                <a href="https://github.com/souying"><span class="am-icon-github am-icon-fw blog-icon"></span></a>
+                <a href="http://weibo.com/fuliku"><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
+              </div>
+            </div>
+
+            <hr>
+            <div class="am-g blog-author blog-article-margin">
+              <div class="am-u-sm-3 am-u-md-3 am-u-lg-2">
+                <img src="http://ww4.sinaimg.cn/mw690/b5276e73jw8fbpbk3mezqj20dt0e83z2.jpg" alt="" class="blog-author-img am-circle">
+              </div>
+              <div class="am-u-sm-9 am-u-md-9 am-u-lg-10">
+              <h3><span>作者 &nbsp;: &nbsp;</span><span class="blog-color"><%= topicData.user.uname %></span></h3>
+                <p><%= topicData.user.des %></p>
+              </div>
+            </div>
+            <hr>
+            <!-- 多说评论框 start -->
+        <div class="ds-thread" data-thread-key="<%= topicData._id %>" data-title="<%= topicData.tName %>" data-url="/details/<%= topicData._id %>"></div>
+        <!-- 多说评论框 end -->
+        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"blogdiv"};
+          (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+          })();
+        </script>
+      <!-- 多说公共JS代码 end -->
+        </div>
+        
+      <!-- 公共侧边栏部分 -->
+      <% include slidebar %>
+      
+</div>
+    <script>
+        var content = document.getElementById('text-input').innerHTML;
+        var renderer_zai30 = new marked.Renderer();
+        marked.setOptions({
+            renderer: renderer_zai30,
+            gfm: true,
+            tables: true,
+            breaks: true,//回车换成br
+            pedantic: false,
+            sanitize: true,
+            smartLists: true,
+            smartypants: false
+        });
+
+        //
+        function Editor(input, preview) {
+            this.update = function () {
+                //marked(input.value); 解析Markdown为HTML
+                preview.innerHTML = marked(preview.innerHTML);
+            };
+            input.editor = this;
+            this.update();
+        }
+        var $markdown = function (id) { return document.getElementById(id); };
+        new Editor($markdown("preview"), $markdown("preview"));
+    </script>
+    <!-- 播放音乐 -->
+    <audio src="<%= topicData.mp3 %>" id="music" autoplay></audio>
+    <script>
+        // 获取元素
+        var music = document.getElementById('music');
+        
+        window.onkeydown = function(e){
+            // music.play();
+            // console.log(e);
+            // console.log(music.paused);
+            if(e.ctrlKey){
+                if(music.paused){
+                    music.play();
+                }else{
+                    music.pause();
+                }
+                
+            }
+        }
+    </script> 
+<!-- content end -->
+<!-- 公共底部部分 -->
+<% include footer %>

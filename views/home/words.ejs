@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>留言板--<%= webData.webName %></title>
+  <meta name="keywords" content="<%= webData.webKey %>">
+  <meta name="description" content="<%= webData.webDes %>">
+  <link rel="icon" href="/assets/i/favicon.ico">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="/assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileImage" content="/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="/assets/css/app.css">
+  <link rel="stylesheet" href="/css/default.min.css">
+  <script src="/js/marked.js"></script>
+</head>
+
+<body id="blog">
+
+<header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
+    <div class="am-u-sm-8">
+       <a href="/"><img style="float:left;margin-bottom:20px;" width="200" src="http://wx4.sinaimg.cn/mw690/b5276e73ly1fct0sxaw3jj204v01nq2x.jpg" alt="<%= webData.webName %>"/></a>
+       
+    </div>
+</header>
+<hr>
+<!-- nav start -->
+<nav class="am-g am-g-fixed blog-fixed blog-nav">
+<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav">
+      <li class="am-active"><a href="/">首页</a></li>
+      <% cateData.forEach(function(cateData){ %>
+          <li><a href="/list/?tab=<%= cateData._id %>"><%= cateData.cateName %></a></li>
+      <% }) %>
+      <li><a href="/words">留言板</a></li>
+    </ul>
+    <form class="am-topbar-form am-topbar-right am-form-inline" role="search" action="/list/search">
+      <div class="am-form-group">
+        <input type="search" name="search" class="am-form-field am-input-sm" placeholder="搜索">
+        <!-- name得放在前面 放在后面还不行 不知道什么情况 -->
+        <!-- <input type="search" name="search" class="am-form-field am-input-sm" placeholder="搜索"> -->
+      </div>
+    </form>
+  </div>
+</nav>
+<hr>
+<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed blog-content">
+    <div class="am-u-md-8 am-u-sm-12">
+      
+          
+            <!-- 多说评论框 start -->
+        <div class="ds-thread" data-thread-key="/word" data-title="留言板" data-url="/word"></div>
+        <!-- 多说评论框 end -->
+        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"blogdiv"};
+          (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+          })();
+        </script>
+      <!-- 多说公共JS代码 end -->
+        </div>
+        
+      <!-- 公共侧边栏部分 -->
+      <% include slidebar %>
+      
+</div>
+<!-- content end -->
+<!-- 公共底部部分 -->
+<% include footer %>

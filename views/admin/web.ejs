@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - 站点管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>高级管理 <small>web站点高级全选管理</small></h5>
+                        <div class="ibox-tools">
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="text-center">
+                            <a data-toggle="modal" class="btn btn-primary" href="form_basic.html#modal-form">站点权限管理</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>网站信息 <small>SEO优化</small></h5>
+                        <div class="ibox-tools">
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" class="form-horizontal" action="/admin/webed" >
+                            <!-- 输出错误信息 -->
+                              <% if(errMsg.length){ %>
+                                <p class="alert alert-danger"><%= errMsg %></p>
+                              <%  } %>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">网站名</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="webName" value="<%= webData.webName %>">
+                                    <!-- 隐藏域网站状态码 -->
+                                    <input type="hidden" class="form-control" name="webMa" value="<%= webData.webMa %>">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">网站关键字</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="webKey" value="<%= webData.webKey %>"> <span class="help-block m-b-none">以英文,隔开8到10个即可</span>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">网站描述</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="webDes" value="<%= webData.webDes %>"> <span class="help-block m-b-none">80个字左右</span>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">网站url</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="webUrl" value="<%= webData.webUrl %>"> <span class="help-block m-b-none">网站的域名</span>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">网站logo</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="webLogo" value="<%= webData.webLogo %>"> <span class="help-block m-b-none">网站的LOGOurl地址加http://</span>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">博主邮箱</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="webEmail" value="<%= webData.webEmail %>"> <span class="help-block m-b-none">网站管理员邮箱</span>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">网站备案号</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="webBeian" value="<%= webData.webBeian %>"> <span class="help-block m-b-none">网站的备案信息例如：京ICP备123456号-2</span>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">操作说明</label>
+
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">此页面有利于seo优化，建议一次修改好</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-primary" type="submit">修改</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-form" class="modal fade" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 b-r">
+                            <h3 class="m-t-none m-b">WEB权限管理</h3>
+                            <form role="form" method="post" action="/admin/isweb">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">网站维护状态</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="isWeb" value="<%= webData.isWeb %>"> <span class="help-block m-b-none">1为开启维护页面，0为正常访问</span>
+                                        <!-- 隐藏域网站状态码 -->
+                                        <input type="hidden" class="form-control" name="webMa" value="<%= webData.webMa %>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">注册状态</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="isReg" value="<%= webData.isReg %>"> <span class="help-block m-b-none">1为关闭注册，0为开启</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>修改</strong>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="/js/content.js?v=1.0.0"></script>
+
+    <!-- iCheck -->
+    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+    
+    
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - 编辑修改文章</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/plugins/markdown/bootstrap-markdown.min.css" />
+    <link href="/css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <form class="am-form" id="log-form" action="/topic/doTopiced" method="post">  
+            <!-- 输出错误信息 -->
+          <% if(errMsg.length){ %>
+            <p class="alert alert-danger"><%= errMsg %></p>
+          <%  } %>   
+            <div class="row">
+            <div class="col-lg-12">
+                <input type="text" class="form-control" placeholder="标题" name="tName" value="<%= topicData.tName %>">
+                <input type="hidden" class="form-control" name="_id" value="<%= topicData._id %>">
+            </div>
+            <div class="form-group" style="overflow:hidden;margin-bottom:-10px;">
+                <div class="col-sm-12">
+                    <select class="form-control m-b" name="cid">
+                        <option value="">请选择文章分类</option>
+                        
+                            <!-- 选择的是哪一个模块 -->
+                            <option value="<%= topicData.cid._id %>">
+                                <%= topicData.cid.cateName %>
+                            </option>
+                       
+                    </select>
+                </div>
+            </div>         
+                <div class="col-lg-12">
+                        <h2>文章内容</h2>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <textarea name="tContent" data-provide="markdown" rows="10">
+                                     <%= topicData.tContent %>
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <h2>文章简介</h2>
+                                <textarea name="tj" data-provide="markdown" rows="3">
+                                    <%= topicData.tj %>
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">文章图片</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" placeholder="1推荐，0取消" class="form-control" name="img" value="<%= topicData.img %>">1400宽620高
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">文章标签</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="text" placeholder="标签" class="form-control" name="tag" value="<%= topicData.tag %>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">发布时间</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" placeholder="2099/10/1" class="form-control" name="time"value="<%= topicData.time %>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">文章音乐</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" placeholder="http://" class="form-control" name="mp3"value="<%= topicData.mp3 %>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">推荐轮播</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="text" placeholder="1推荐，0取消" class="form-control" name="isshow" value="<%= topicData.isshow %>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">推荐置顶</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="text" placeholder="1推荐，0取消" class="form-control" name="top" value="<%= topicData.top %>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-10 control-label"></label>
+                    <button class="btn btn-primary">
+                        <i class="fa fa-check"></i>
+                        更新
+                    </button>
+                    <a href="/admin/success" class="btn btn-warning">
+                         <i class="fa fa-times"></i>
+                        返回
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="/js/content.js?v=1.0.0"></script>
+
+    <!-- simditor -->
+    <script type="text/javascript" src="/js/plugins/markdown/markdown.js"></script>
+    <script type="text/javascript" src="/js/plugins/markdown/to-markdown.js"></script>
+    <script type="text/javascript" src="/js/plugins/markdown/bootstrap-markdown.js"></script>
+    <script type="text/javascript" src="/js/plugins/markdown/bootstrap-markdown.zh.js"></script>
+
+
+    
+    
+</body>
+
+</html>
