@@ -12,6 +12,7 @@ smtpTransport = nodemailer.createTransport(smtpTransport({
         pass: config.email.pass
     }
 }));
+
 //声明一个函数  3个实参
 var sendMail = function (recipient, subject, html) {
 
