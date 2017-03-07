@@ -1,6 +1,7 @@
 //对应blog_topics集合
 
 // 加载数据库配置文件
+
 var mongoose = require('../config/db_config');
 
 // 创建骨架
