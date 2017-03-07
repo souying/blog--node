@@ -11,6 +11,7 @@
     return document.getElementsByTagName(name);
   }
   //获取配置参数
+  
   function get_config_option() {
     var scripts = get_by_tagname("script"),
       script_len = scripts.length,
