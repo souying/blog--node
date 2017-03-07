@@ -13,6 +13,7 @@ router.get('/',list.list);
 router.get('/search',list.search);
 
 //前台标签页
+
 router.get('/tag',list.tag);
 
 module.exports = router;
